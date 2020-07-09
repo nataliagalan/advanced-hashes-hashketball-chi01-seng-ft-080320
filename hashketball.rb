@@ -165,9 +165,47 @@ end
 
 def team_names
  teams_array = []
- game_hash.map do |home_away, team_attributes|
-   while home_away == :home || :away do
-    teams_array << team_attributes[:team_name]
+  teams_array << game_hash[:home][:team_name]
+  teams_array << game_hash[:away][:team_name]
+  return teams_array
+end
+
+def player_numbers(team)
+ team_numbers = []
+  if game_hash[:home][:team_name] == team
+    game_hash[:home][:players].each do |stats|
+      team_numbers << stats[:number]
+    end
+ else game_hash[:away][:team_name] == team
+    game_hash[:away][:players].each do |stats|
+      team_numbers << stats[:number]
+    end
+  end
+       return team_numbers
+end
+
+def player_stats(player)
+  game_hash.each do |home_away, team_attributes|
+      team_attributes[:players].each do |stats|
+        if stats[:player_name] == player
+            return stats
+            binding.pry
+        end
+      end
    end
   end
+
+  def big_shoe_rebounds
+  biggest = 0
+  rebounds = 0
+  game_hash.each do |home_away, team_attributes|
+    team_attributes[:players].each do |stats|
+      size = stats[:shoe]
+      if size > biggest
+        biggest = size
+        rebounds = stats[:rebounds]
+      end
+    end
+  end
+  rebounds
 end
