@@ -140,7 +140,7 @@ def num_points_scored(player)
       end
   end
 end
-binding.pry
+
 
 def shoe_size(player)
   shoe = 0
@@ -284,7 +284,6 @@ def long_name_steals_a_ton?
 
   if player == player_with_longest_name
     return true
-    binding.pry
   end
 end
   binding.pry
