@@ -141,6 +141,7 @@ def num_points_scored(player)
   end
 end
 
+
 def shoe_size(player)
   shoe = 0
   game_hash.each do |home_away, team_attributes|
@@ -189,7 +190,6 @@ def player_stats(player)
       team_attributes[:players].each do |stats|
         if stats[:player_name] == player
             return stats
-            binding.pry
         end
       end
    end
@@ -283,7 +283,5 @@ def long_name_steals_a_ton?
 
   if player == player_with_longest_name
     return true
-    binding.pry
   end
 end
-  binding.pry
